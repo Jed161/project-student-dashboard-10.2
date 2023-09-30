@@ -1,10 +1,12 @@
  import { useState } from "react";
  import CohortList from "./Components/CohortList";
  import StudentList from "./Components/StudentList"
-// import "./data/App.css"
-import data from "./data/data.json"
+ import data from "./data/data.json"
+ import Header from "./Components/Header";
+ import "./data/App.css"
 
 function App() {
+
   const [displayedStudents, setDisplayedStudents] = useState(data);
 
   const getCohorts = (StudentList) => {
@@ -14,6 +16,7 @@ function App() {
     })
     return Object.keys(cohortCounter)
   }
+
   const filterStudentsByCohort = (cohortCode) => {
     console.log(cohortCode)
     let filteredList = data.filter(student => {
@@ -25,12 +28,14 @@ function App() {
 
   return (
     <div>
-       {/* <section className="main-page-content"></section> */}
+      <Header />
+      <section className="main-page-content"></section> 
       <CohortList 
       filterStudentByCohort={filterStudentsByCohort} cohorts={getCohorts(data)} /> 
       <StudentList students={data} /> 
     </div>
   );
+  
 }
 
 export default App;
