@@ -1,8 +1,8 @@
-import StudentCard from "./StudentCard.js"
+import StudentCard from "./StudentCard"
 
-function StudentsList({students}) {
+function StudentList({students}) {
     return (
-        <div className="students-list"> 
+        <div className="student-list"> 
         {students.map((student) => {
             return (
                 <StudentCard key={student.id} student={student} />
@@ -12,4 +12,4 @@ function StudentsList({students}) {
     );
 }
 
-export default StudentsList;
+export default StudentList;

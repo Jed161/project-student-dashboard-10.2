@@ -1,18 +1,15 @@
-import { useState } from "react";
-
-import CohortList from "./Components/CohortList.jsx";
-import HomePage from "./Components/HomePage.jsx"
-import StudentsList from "./Components/StudentsList.jsx"
+ import { useState } from "react";
+ import CohortList from "./Components/CohortList";
+ import StudentList from "./Components/StudentList"
+// import "./data/App.css"
 import data from "./data/data.json"
-
-import "./App.css"
 
 function App() {
   const [displayedStudents, setDisplayedStudents] = useState(data);
 
-  const getCohorts = (StudentsList) => {
+  const getCohorts = (StudentList) => {
     let cohortCounter = {}
-    StudentsList.forEach(student => {
+    StudentList.forEach(student => {
       cohortCounter[student.cohort.cohortCode] = true
     })
     return Object.keys(cohortCounter)
@@ -28,12 +25,14 @@ function App() {
 
   return (
     <div>
-      <Header />
-      <section className="main-page-content"></section>
-      <CohortList filterStudentByCohort={filterStudentsByCohort} cohorts={getCohorts(data)} />
-      <StudentsList students={displayedStudents} />
+       {/* <section className="main-page-content"></section> */}
+      <CohortList 
+      filterStudentByCohort={filterStudentsByCohort} cohorts={getCohorts(data)} /> 
+      <StudentList students={data} /> 
     </div>
   );
 }
 
 export default App;
+
+
